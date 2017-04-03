@@ -9,7 +9,7 @@ RUN \
  echo 'locales locales/locales_to_be_generated multiselect C.UTF-8 UTF-8, en_US.UTF-8 UTF-8 ' | debconf-set-selections && \
  echo 'locales locales/default_environment_locale select en_US.UTF-8' | debconf-set-selections && \
  apt-get update && \
- DEBIAN_FRONTEND=noninteractive apt-get install -y -t jessie-backports \
+ DEBIAN_FRONTEND=noninteractive apt-get install -y \
  locales \
  lava-dispatcher \
  lava-dev \
@@ -18,8 +18,7 @@ RUN \
  sudo \
  qemu-system \
  qemu-system-arm \
- qemu-system-i386 \
- qemu-kvm && \ 
+ qemu-system-i386 && \
  rm -rf /var/lib/apt/lists/*
 
 RUN \
