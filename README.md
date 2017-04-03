@@ -22,4 +22,4 @@ Enviroment variables are available to help setup state within the container.
 ```
 sudo docker run -it -v /dev:/dev -p 69:69 -p 80:80 -p 5555:5555 -p 5556:5556 -e LAVA_MASTER='<lava master ip>' -h <HOSTNAME> --privileged kernelci/lava-docker-slave:latest
 ```
-Where LAVA_API_TOKEN is the token for your kernelci user.
+Where LAVA_MASTER is the IP address for your LAVA server.
