@@ -1,4 +1,4 @@
-FROM debian:jessie-backports
+FROM aarch64/debian:sid
 
 # Add services helper utilities to start and stop LAVA
 COPY stop.sh .
