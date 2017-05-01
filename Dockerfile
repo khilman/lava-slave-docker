@@ -15,6 +15,10 @@ RUN \
  git \
  vim \
  sudo \
+ python-setproctitle \
+ tftpd-hpa \
+ u-boot-tools \
+ device-tree-compiler \
  qemu-system \
  qemu-system-arm \
  qemu-system-i386 \
