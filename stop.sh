@@ -1,3 +1,3 @@
 #!/bin/bash
-service tftpd-hpa start
+service tftpd-hpa stop
 service lava-slave stop

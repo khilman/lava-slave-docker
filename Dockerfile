@@ -1,4 +1,4 @@
-FROM aarch64/debian:sid
+FROM linarotechnologies/minideb:stretch-arm64
 
 # Add services helper utilities to start and stop LAVA
 COPY stop.sh .
@@ -16,6 +16,10 @@ RUN \
  git \
  vim \
  sudo \
+ python-setproctitle \
+ tftpd-hpa \
+ u-boot-tools \
+ device-tree-compiler \
  qemu-system \
  qemu-system-arm \
  qemu-system-i386 && \
@@ -29,6 +33,10 @@ RUN \
  sleep 2 && \
  /usr/share/lava-server/debian-dev-build.sh -p lava-dispatcher
 
-COPY lava-slave /etc/lava-dispatcher/lava-slave
+COPY configs/lava-slave /etc/lava-dispatcher/lava-slave
+
+COPY configs/tftpd-hpa /etc/default/tftpd-hpa
+
+EXPOSE 69/udp
 
 CMD /start.sh && bash
