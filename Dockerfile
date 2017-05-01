@@ -34,6 +34,10 @@ RUN \
  sleep 2 && \
  /usr/share/lava-server/debian-dev-build.sh -p lava-dispatcher
 
-COPY lava-slave /etc/lava-dispatcher/lava-slave
+COPY configs/lava-slave /etc/lava-dispatcher/lava-slave
+
+COPY configs/tftpd-hpa /etc/default/tftpd-hpa
+
+EXPOSE 69/udp
 
 CMD /start.sh && bash
