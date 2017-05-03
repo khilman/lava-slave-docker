@@ -24,6 +24,15 @@ RUN \
  qemu-system-i386 \
  qemu-kvm 
 
+# Additional packages
+RUN apt-get update && \
+ apt-get install --yes conmux python-setproctitle tftpd-hpa u-boot-tools device-tree-compiler iputils-ping net-tools 
+ 
+# acme-cl.i
+RUN \
+ git clone https://github.com/baylibre-acme/acme-cli.git /root/acme-cli && \
+ cp /root/acme-cli/acme-cli /usr/local/bin
+ 
 RUN \
  git clone https://github.com/kernelci/lava-server.git -b release /root/lava-server && \
  git clone https://github.com/kernelci/lava-dispatcher.git -b master /root/lava-dispatcher && \
