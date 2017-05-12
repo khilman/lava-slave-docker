@@ -1,8 +1,8 @@
 FROM bitnami/minideb:unstable
 
 # Add services helper utilities to start and stop LAVA
-COPY stop.sh .
-COPY start.sh .
+COPY scripts/stop.sh .
+COPY scripts/start.sh .
 
 RUN \
  echo 'lava-server   lava-server/instance-name string lava-slave-instance' | debconf-set-selections && \
@@ -25,9 +25,9 @@ RUN \
  qemu-kvm 
 
 RUN \
- git clone -b master https://git.linaro.org/lava/lava-dispatcher.git /root/lava-dispatcher && \
+ git clone https://github.com/kernelci/lava-dispatcher.git -b master /root/lava-dispatcher && \
  cd /root/lava-dispatcher && \
- git checkout 2017.4 && \
+ git checkout release && \
  git config --global user.name "Docker Build" && \
  git config --global user.email "info@kernelci.org" && \
  echo "cd \${DIR} && dpkg -i *.deb" >> /usr/share/lava-server/debian-dev-build.sh && \
