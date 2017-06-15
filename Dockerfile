@@ -18,6 +18,8 @@ RUN \
  python-setproctitle \
  tftpd-hpa \
  u-boot-tools \
+ conmux \
+ lavapdu-client \
  device-tree-compiler \
  qemu-system \
  qemu-system-arm \
