@@ -25,14 +25,15 @@ RUN \
  qemu-kvm 
 
 RUN \
+ git clone https://github.com/kernelci/lava-server.git -b release /root/lava-server && \
  git clone https://github.com/kernelci/lava-dispatcher.git -b master /root/lava-dispatcher && \
  cd /root/lava-dispatcher && \
  git checkout release && \
  git config --global user.name "Docker Build" && \
  git config --global user.email "info@kernelci.org" && \
- echo "cd \${DIR} && dpkg -i *.deb" >> /usr/share/lava-server/debian-dev-build.sh && \
+ echo "cd \${DIR} && dpkg -i *.deb" >> /root/lava-server/share/debian-dev-build.sh && \
  sleep 2 && \
- /usr/share/lava-server/debian-dev-build.sh -p lava-dispatcher
+ /root/lava-server/share/debian-dev-build.sh -p lava-dispatcher
 
 COPY configs/lava-slave /etc/lava-dispatcher/lava-slave
 
