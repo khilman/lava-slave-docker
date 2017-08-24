@@ -18,17 +18,15 @@ RUN \
  python-setproctitle \
  tftpd-hpa \
  u-boot-tools \
+ conmux \
+ xnbd-server \
  device-tree-compiler \
  qemu-system \
  qemu-system-arm \
  qemu-system-i386 \
  qemu-kvm 
 
-# Additional packages
-RUN apt-get update && \
- apt-get install --yes conmux python-setproctitle tftpd-hpa u-boot-tools device-tree-compiler iputils-ping net-tools 
- 
-# acme-cl.i
+# acme-cli
 RUN \
  git clone https://github.com/baylibre-acme/acme-cli.git /root/acme-cli && \
  cp /root/acme-cli/acme-cli /usr/local/bin
@@ -37,7 +35,8 @@ RUN \
  git clone https://github.com/kernelci/lava-server.git -b release /root/lava-server && \
  git clone https://github.com/kernelci/lava-dispatcher.git -b master /root/lava-dispatcher && \
  cd /root/lava-dispatcher && \
- git checkout release && \
+ git remote add --no-tags khilman https://github.com/khilman/lava-dispatcher.git && git remote update && \
+ git checkout -f khilman/lab-baylibre && \
  git config --global user.name "Docker Build" && \
  git config --global user.email "info@kernelci.org" && \
  echo "cd \${DIR} && dpkg -i *.deb" >> /root/lava-server/share/debian-dev-build.sh && \
