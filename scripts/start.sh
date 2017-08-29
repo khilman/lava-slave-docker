@@ -6,3 +6,6 @@ fi
 service tftpd-hpa start
 service lava-slave start
 
+# start an http file server for boot/transfer_overlay support
+(cd /var/lib/lava/dispatcher; python -m SimpleHTTPServer 80 &)
+
