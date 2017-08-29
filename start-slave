@@ -8,7 +8,7 @@ docker build -t $IMAGE .
 
 sudo systemctl stop docker-container@$CONT
 
-docker create --rm -it -v /dev:/dev -p 69:69/udp -p 55000-56000:55000-56000 -e LAVA_MASTER=$LAVA_MASTER_IP -h $HOSTNAME --privileged --name $CONT $IMAGE
+docker create --rm -it -v /dev:/dev -p 69:69/udp -p 80:80 -p 55000-56000:55000-56000 -e LAVA_MASTER=$LAVA_MASTER_IP -h $HOSTNAME --privileged --name $CONT $IMAGE
 
 sudo systemctl start docker-container@$CONT
 sudo systemctl status docker-container@$CONT

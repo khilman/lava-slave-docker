@@ -47,6 +47,6 @@ COPY configs/lava-slave /etc/lava-dispatcher/lava-slave
 
 COPY configs/tftpd-hpa /etc/default/tftpd-hpa
 
-EXPOSE 69/udp
+EXPOSE 69/udp 80
 
 CMD /start.sh && bash
